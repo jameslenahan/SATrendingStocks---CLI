@@ -8,7 +8,7 @@ class SA_Stocks::CLI
   end
 
   def list_companies
-    puts "Welcome to the Inc list scraper! See some of the trending companies on our site!"
+    puts "Welcome to the Seeking Alpha trending stocks scraper! See some of the trending companies on the site!"
     @companies = SA_Stocks::Company.trending
     @companies.each.with_index(1) do |company, i|
       puts "#{i}. #{company.name}"

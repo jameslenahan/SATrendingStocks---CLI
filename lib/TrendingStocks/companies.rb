@@ -13,11 +13,10 @@ class SA_Stocks::Company
     companies << self.company2_details
     companies << self.company3_details
     companies << self.company4_details
-
     companies
   end
   def self.company1_details
-    page = Nokogiri::HTML(open("https://seekingalpha.com/"))
+    page = Nokogiri::HTML(open("https://seekingalpha.com"))
     symbol = page.search("//*[@id='page_content_wrapper']/div[2]/div[2]/section[4]/div[2]/span[1]/a").text
     doc = Nokogiri::HTML(open("https://seekingalpha.com/symbol/#{symbol}"))
     company = self.new
@@ -29,7 +28,7 @@ class SA_Stocks::Company
   end
 
   def self.company2_details
-    page = Nokogiri::HTML(open("https://seekingalpha.com/"))
+    page = Nokogiri::HTML(open("https://seekingalpha.com"))
     symbol = page.search("//*[@id='page_content_wrapper']/div[2]/div[2]/section[4]/div[3]/span[1]/a").text
     doc = Nokogiri::HTML(open("https://seekingalpha.com/symbol/#{symbol}"))
     company = self.new
@@ -39,9 +38,8 @@ class SA_Stocks::Company
     company.market_cap = doc.search("//*[@id='quotes-chart-data']/div[7]/span[2]").text
     company
   end
-
   def self.company3_details
-    page = Nokogiri::HTML(open("https://seekingalpha.com/"))
+    page = Nokogiri::HTML(open("https://seekingalpha.com"))
     symbol = page.search("//*[@id='page_content_wrapper']/div[2]/div[2]/section[4]/div[4]/span[1]/a").text
     doc = Nokogiri::HTML(open("https://seekingalpha.com/symbol/#{symbol}"))
     company = self.new
@@ -52,7 +50,7 @@ class SA_Stocks::Company
     company
   end
   def self.company4_details
-    page = Nokogiri::HTML(open("https://seekingalpha.com/"))
+    page = Nokogiri::HTML(open("https://seekingalpha.com"))
     symbol = page.search("//*[@id='page_content_wrapper']/div[2]/div[2]/section[4]/div[5]/span[1]/a").text
     doc = Nokogiri::HTML(open("https://seekingalpha.com/symbol/#{symbol}"))
     company = self.new
@@ -62,4 +60,5 @@ class SA_Stocks::Company
     company.market_cap = doc.search("//*[@id='quotes-chart-data']/div[7]/span[2]").text
     company
   end
+
 end
